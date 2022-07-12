@@ -1,0 +1,16 @@
+body{
+    font-family: 'Century Gothic', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.Navbar{
+    font-family:'Century Gothic';
+    font-size:19px;
+    font-style: italic;
+    text-align: justify;
+    font-weight: bold;
+    color: black;
+}
+.MainRow {
+    background-color: #ffffff;
+    height: 800px;
+  }
+  

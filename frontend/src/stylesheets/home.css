@@ -1,0 +1,12 @@
+.DiscountElements {
+  margin-top: 5rem;
+  display: inline-block;
+  align-items: center;
+  padding: 0 auto;
+}
+
+.Discount {
+  background-image: url(../images/pizza.jpg);
+  height: 350px;
+  background-size: 500px;
+}

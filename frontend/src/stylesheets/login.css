@@ -1,0 +1,15 @@
+.LoginCard {
+	margin: 40px auto;
+	width: 45%;
+	height: 21rem;
+	align-items: center;
+	padding: 30px;
+	margin-bottom: 50rem;
+	background-color: white;
+	border-radius: 40px;
+}
+
+.Button {
+	font-size: 1vw;
+	width: 50%;
+}
