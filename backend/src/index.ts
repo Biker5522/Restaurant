@@ -11,11 +11,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Routes
-//Restauracja
+//Restaurant
 const routerRestaurant = require('../routes/restaurant');
 app.use('/Restauracja', routerRestaurant);
 
-//Pracownicy
+//Employees
 const routerEmployees = require('../routes/employees');
 app.use('/Pracownicy', routerEmployees);
 
@@ -23,32 +23,32 @@ app.use('/Pracownicy', routerEmployees);
 const routerUsers = require('../routes/users/auth');
 app.use('/', routerUsers);
 
-//Dania
+//Menu
 const routerDishes = require('../routes/dishes');
 app.use('/Menu', routerDishes);
 
-//Stolik
+//Tables
 const routerTables = require('../routes/tables');
 app.use('/Stoliki', routerTables);
 
-//Produkty
+//Products
 const routerProducts = require('../routes/products');
 app.use('/Magazyn', routerProducts);
 
-//Rezerwacje
+//Reservation
 const routerBookings = require('../routes/bookings');
 app.use('/Rezerwacje', routerBookings);
 
-//Zamówienia
+//Orders
 const routerOrders = require('../routes/orders');
 app.use('/Zamowienia', routerOrders);
 
-//Raporty
+//Reports
 const routerReports = require('../routes/reports');
-app.use('/Raporty', routerReports);
+app.use('/Reports', routerReports);
 
 app.get('/', (req, res) => {
-	res.send('Restauracja World');
+	res.send('Restaurany World');
 });
 
 //Database

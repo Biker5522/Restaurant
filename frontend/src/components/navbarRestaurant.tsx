@@ -10,6 +10,7 @@ import { RegisterPage } from '../sites/registerPage';
 import { MenuListPage } from '../sites/adminController/menuController/menuListPage';
 import { MenuAddPage } from '../sites/adminController/menuController/menuAddPage';
 import { MenuEditPage } from '../sites/adminController/menuController/menuEditPage';
+import { WaitersOrdersPage } from '../sites/adminController/reports/waitersOrders';
 import { useCookies } from 'react-cookie';
 import jwt_decode from 'jwt-decode';
 
@@ -51,6 +52,11 @@ function NavbarRestaurant() {
 											Add Dish
 										</NavDropdown.Item>
 									</NavDropdown>
+									<NavDropdown title="Reports" id="basic-nav-dropdown">
+										<NavDropdown.Item as={Link} to={'/Reports/WaiterOrders'}>
+											Orders per waiter
+										</NavDropdown.Item>
+									</NavDropdown>
 									<Nav.Link as={Link} to={'/Stoliki'}>
 										Stoliki
 									</Nav.Link>
@@ -71,6 +77,8 @@ function NavbarRestaurant() {
 						<Route path="/Menu/List" element={<MenuListPage />} />
 						<Route path="/Menu/Add" element={<MenuAddPage />} />
 						<Route path="/Menu/Edit/:id" element={<MenuEditPage />} />
+
+						<Route path="/Reports/WaiterOrders" element={<WaitersOrdersPage />} />
 						<Route path="/Register" element={<RegisterPage />} />
 					</Routes>
 				</Router>
