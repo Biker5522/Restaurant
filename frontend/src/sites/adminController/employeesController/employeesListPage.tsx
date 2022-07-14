@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Button, Stack, ListGroupItem, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { MenuHeaderComponent } from './menuHeaderComponent';
+import { EmployeesHeaderComponent } from './employeesHeaderComponent';
 import '../../../css.css';
 import '../../../stylesheets/adminPanels.css';
 import axios from 'axios';
 import { Console } from 'console';
 
-export const MenuListPage = () => {
+export const EmployeesListPage = () => {
 	const [ backendData, setBackendData ] = useState<any>([]);
-	//Get Product from Menu
+	//Get Employees
 	useEffect(() => {
-		axios('/Menu').then((res) => {
-			setBackendData(res.data.dishes);
+		axios('/Employees').then((res) => {
+			console.log(res);
+			setBackendData(res.data);
 		});
 	}, []);
 
-	//Delete Product
-	const removeDish = (_id: any) => {
+	//Delete Employee
+	const removeEmployee = (_id: any) => {
 		let id: String = _id;
 		console.log(id);
 		axios
-			.delete(`/Menu/${_id}`)
+			.delete(`/Employees/${_id}`)
 			.then(function(response) {
 				window.location.reload();
 			})
@@ -37,21 +38,24 @@ export const MenuListPage = () => {
 
 				<Col sm={8} className="MainRow">
 					<div className="col-md-5 Panel">
-						<MenuHeaderComponent />
+						<EmployeesHeaderComponent />
 						<div className="MenuCrudMain">
 							<ListGroup>
-								{backendData.map((dish: any) => (
+								{backendData.map((employee: any) => (
 									<ListGroupItem className="d-flex">
-										<p>{dish.name} &nbsp;</p>
-										<strong>{dish.category} &nbsp; </strong>
-										<p>{dish.price} </p>
+										<p>{employee.name} &nbsp;</p>
+										<p>{employee.surname} &nbsp;</p>
+										<p>{employee.position} &nbsp;</p>
 										<div>
-											<Link className="btn btn-warning ml-10 " to={`../Menu/Edit/${dish._id}`}>
+											<Link
+												className="btn btn-warning ml-10 "
+												to={`../Employees/Edit/${employee._id}`}
+											>
 												Edit
 											</Link>
 											<Button
 												className="btn btn-warning ml-10 "
-												onClick={() => removeDish(dish._id)}
+												onClick={() => removeEmployee(employee._id)}
 												variant="danger"
 											>
 												Delete

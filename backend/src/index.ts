@@ -17,7 +17,7 @@ app.use('/Restauracja', routerRestaurant);
 
 //Employees
 const routerEmployees = require('../routes/employees');
-app.use('/Pracownicy', routerEmployees);
+app.use('/Employees', routerEmployees);
 
 //Users
 const routerUsers = require('../routes/users/auth');

@@ -5,12 +5,20 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
 import { Home } from '../sites/homePage';
 import { Menu } from '../sites/menuPage';
+
 import { LoginPage } from '../sites/loginPage';
 import { RegisterPage } from '../sites/registerPage';
+
 import { MenuListPage } from '../sites/adminController/menuController/menuListPage';
 import { MenuAddPage } from '../sites/adminController/menuController/menuAddPage';
 import { MenuEditPage } from '../sites/adminController/menuController/menuEditPage';
+
 import { WaitersOrdersPage } from '../sites/adminController/reports/waitersOrders';
+
+import { EmployeesListPage } from '../sites/adminController/employeesController/employeesListPage';
+import { EmployeesAddPage } from '../sites/adminController/employeesController/employeesAddPage';
+import { EmployeesEditPage } from '../sites/adminController/employeesController/employeesEditPage';
+
 import { useCookies } from 'react-cookie';
 import jwt_decode from 'jwt-decode';
 
@@ -28,6 +36,7 @@ function NavbarRestaurant() {
 	if (token != null) {
 		//Decode JWT Token
 		let decodedToken: any = jwt_decode(token);
+
 		//Check Role of User
 		//Admin
 		if (decodedToken._role == 'admin') {
@@ -57,6 +66,14 @@ function NavbarRestaurant() {
 											Orders per waiter
 										</NavDropdown.Item>
 									</NavDropdown>
+									<NavDropdown title="Employees" id="basic-nav-dropdown">
+										<NavDropdown.Item as={Link} to={'/Employees/List'}>
+											Employees List
+										</NavDropdown.Item>
+										<NavDropdown.Item as={Link} to={'/Employees/Add'}>
+											Add Employee
+										</NavDropdown.Item>
+									</NavDropdown>
 									<Nav.Link as={Link} to={'/Stoliki'}>
 										Stoliki
 									</Nav.Link>
@@ -80,6 +97,10 @@ function NavbarRestaurant() {
 
 						<Route path="/Reports/WaiterOrders" element={<WaitersOrdersPage />} />
 						<Route path="/Register" element={<RegisterPage />} />
+
+						<Route path="/Employees/List" element={<EmployeesListPage />} />
+						<Route path="/Employees/Add" element={<EmployeesAddPage />} />
+						<Route path="/Employees/Edit/:id" element={<EmployeesEditPage />} />
 					</Routes>
 				</Router>
 			);
