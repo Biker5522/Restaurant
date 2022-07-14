@@ -41,7 +41,7 @@ app.use('/Rezerwacje', routerBookings);
 
 //Orders
 const routerOrders = require('../routes/orders');
-app.use('/Zamowienia', routerOrders);
+app.use('/Orders', routerOrders);
 
 //Reports
 const routerReports = require('../routes/reports');

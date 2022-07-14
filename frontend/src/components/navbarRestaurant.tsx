@@ -19,6 +19,10 @@ import { EmployeesListPage } from '../sites/adminController/employeesController/
 import { EmployeesAddPage } from '../sites/adminController/employeesController/employeesAddPage';
 import { EmployeesEditPage } from '../sites/adminController/employeesController/employeesEditPage';
 
+import { OrdersListPage } from '../sites/adminController/ordersController/ordersListPage';
+import { OrdersAddPage } from '../sites/adminController/ordersController/ordersAddPage';
+import { OrdersEditPage } from '../sites/adminController/ordersController/ordersEditPage';
+
 import { useCookies } from 'react-cookie';
 import jwt_decode from 'jwt-decode';
 
@@ -74,6 +78,14 @@ function NavbarRestaurant() {
 											Add Employee
 										</NavDropdown.Item>
 									</NavDropdown>
+									<NavDropdown title="Orders" id="basic-nav-dropdown">
+										<NavDropdown.Item as={Link} to={'/Orders/List'}>
+											Orders List
+										</NavDropdown.Item>
+										<NavDropdown.Item as={Link} to={'/Orders/Add'}>
+											Add Order
+										</NavDropdown.Item>
+									</NavDropdown>
 									<Nav.Link as={Link} to={'/Stoliki'}>
 										Stoliki
 									</Nav.Link>
@@ -101,6 +113,10 @@ function NavbarRestaurant() {
 						<Route path="/Employees/List" element={<EmployeesListPage />} />
 						<Route path="/Employees/Add" element={<EmployeesAddPage />} />
 						<Route path="/Employees/Edit/:id" element={<EmployeesEditPage />} />
+
+						<Route path="/Orders/List" element={<OrdersListPage />} />
+						<Route path="/Orders/Add" element={<OrdersAddPage />} />
+						<Route path="/Orders/Edit" element={<OrdersEditPage />} />
 					</Routes>
 				</Router>
 			);
