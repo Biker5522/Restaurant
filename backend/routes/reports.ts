@@ -45,7 +45,7 @@ router.get('/Zamowienia/:start/:end', async (req: Request, res: Response) => {
 	}
 });
 //Zlicza Przychody z danego przedziału
-router.get('/Przychody/:start/:end', async (req: Request, res: Response) => {
+router.get('/Income/:start/:end', async (req: Request, res: Response) => {
 	try {
 		var income: Number = 0;
 		const orders = await Order.find();

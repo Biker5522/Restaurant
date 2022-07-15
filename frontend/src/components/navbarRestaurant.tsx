@@ -14,6 +14,7 @@ import { MenuAddPage } from '../sites/adminController/menuController/menuAddPage
 import { MenuEditPage } from '../sites/adminController/menuController/menuEditPage';
 
 import { WaitersOrdersPage } from '../sites/adminController/reports/waitersOrders';
+import { IncomePage } from '../sites/adminController/reports/incomePage';
 
 import { EmployeesListPage } from '../sites/adminController/employeesController/employeesListPage';
 import { EmployeesAddPage } from '../sites/adminController/employeesController/employeesAddPage';
@@ -54,6 +55,7 @@ function NavbarRestaurant() {
 									<Nav.Link as={Link} to={'/'}>
 										Home
 									</Nav.Link>
+
 									<NavDropdown title="Menu" id="basic-nav-dropdown">
 										<NavDropdown.Item as={Link} to={'/Menu'}>
 											User Menu
@@ -65,11 +67,16 @@ function NavbarRestaurant() {
 											Add Dish
 										</NavDropdown.Item>
 									</NavDropdown>
+
 									<NavDropdown title="Reports" id="basic-nav-dropdown">
 										<NavDropdown.Item as={Link} to={'/Reports/WaiterOrders'}>
 											Orders per waiter
 										</NavDropdown.Item>
+										<NavDropdown.Item as={Link} to={'/Reports/Income'}>
+											Income
+										</NavDropdown.Item>
 									</NavDropdown>
+
 									<NavDropdown title="Employees" id="basic-nav-dropdown">
 										<NavDropdown.Item as={Link} to={'/Employees/List'}>
 											Employees List
@@ -78,6 +85,7 @@ function NavbarRestaurant() {
 											Add Employee
 										</NavDropdown.Item>
 									</NavDropdown>
+
 									<NavDropdown title="Orders" id="basic-nav-dropdown">
 										<NavDropdown.Item as={Link} to={'/Orders/List'}>
 											Orders List
@@ -86,7 +94,8 @@ function NavbarRestaurant() {
 											Add Order
 										</NavDropdown.Item>
 									</NavDropdown>
-									<Nav.Link as={Link} to={'/Stoliki'}>
+
+									<Nav.Link as={Link} to={'/Tables'}>
 										Stoliki
 									</Nav.Link>
 								</Nav>
@@ -103,12 +112,14 @@ function NavbarRestaurant() {
 						<Route path="/Menu" element={<Menu />} />
 						<Route path="/Stoliki" />
 						<Route path="/Login" element={<LoginPage />} />
+						<Route path="/Register" element={<RegisterPage />} />
+
 						<Route path="/Menu/List" element={<MenuListPage />} />
 						<Route path="/Menu/Add" element={<MenuAddPage />} />
 						<Route path="/Menu/Edit/:id" element={<MenuEditPage />} />
 
 						<Route path="/Reports/WaiterOrders" element={<WaitersOrdersPage />} />
-						<Route path="/Register" element={<RegisterPage />} />
+						<Route path="/Reports/Income" element={<IncomePage />} />
 
 						<Route path="/Employees/List" element={<EmployeesListPage />} />
 						<Route path="/Employees/Add" element={<EmployeesAddPage />} />
