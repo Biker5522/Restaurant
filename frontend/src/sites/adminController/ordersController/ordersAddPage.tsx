@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent, useState, useEffect } from 'react';
 import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../css.css';
@@ -7,8 +7,18 @@ import '../../../css.css';
 export const OrdersAddPage = () => {
 	const [ employeeName, setEmployeeName ] = useState('');
 	const [ employeeSurname, setEmployeeSurname ] = useState('');
+	const [ positions, setPositions ] = useState([]);
 
 	let navigate = useNavigate();
+	//GetDishes
+	const [ backendData, setBackendData ] = useState([]);
+
+	useEffect(() => {
+		axios('/Menu').then((res) => {
+			setBackendData(res.data.dishes);
+		});
+	}, []);
+
 	const SubmitHandler = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		//Api connect POST User
@@ -36,6 +46,37 @@ export const OrdersAddPage = () => {
 							<Form.Control
 								type="text"
 								placeholder="Enter employee surname"
+								value={employeeSurname}
+								onChange={(e: any) => setEmployeeSurname(e.target.value)}
+							/>
+							<Form.Control
+								type="text"
+								placeholder="Enter table"
+								value={employeeSurname}
+								onChange={(e: any) => setEmployeeSurname(e.target.value)}
+							/>
+							<Form.Select aria-label="Default select example">
+								<option value="1">Two</option>
+							</Form.Select>
+							<Form.Select value={positions}>
+								<option>Positions</option>
+								{backendData.map((item: any) => {
+									return (
+										<option key={item._id} value={item.name}>
+											{item.name} {item.price}$
+										</option>
+									);
+								})}
+							</Form.Select>
+							<Form.Control
+								type="date"
+								placeholder="Enter date*"
+								value={employeeSurname}
+								onChange={(e: any) => setEmployeeSurname(e.target.value)}
+							/>
+							<Form.Control
+								type="number"
+								placeholder="Enter price*"
 								value={employeeSurname}
 								onChange={(e: any) => setEmployeeSurname(e.target.value)}
 							/>

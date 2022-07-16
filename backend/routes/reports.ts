@@ -13,11 +13,13 @@ router.get('/WaitersOrders', async (req: Request, res: Response) => {
 		const employees = await Employee.find();
 		var returnList: any[] = [];
 		for (const element of employees) {
+			var ret: any[] = [];
 			var idEmployee = element._id;
-			returnList.push(element);
 			//wyszukanie zamówień z id pracownika
 			const orders = await Order.find({}).where({ employee: idEmployee });
-			returnList.push(orders);
+			ret.push(element);
+			ret.push(orders);
+			returnList.push(ret);
 		}
 		return res.status(200).json(returnList);
 	} catch (err) {

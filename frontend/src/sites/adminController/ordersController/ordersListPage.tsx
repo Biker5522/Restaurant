@@ -13,7 +13,6 @@ export const OrdersListPage = () => {
 	useEffect(() => {
 		axios('/Orders').then((res) => {
 			setBackendData(res.data);
-			console.log(res.data);
 		});
 	}, []);
 
@@ -46,6 +45,9 @@ export const OrdersListPage = () => {
 										<p>{order.employee.surname} &nbsp;</p>
 										<p>{order.price} &nbsp;</p>
 										<p>{order.date} &nbsp;</p>
+										<p>{order.status} &nbsp;</p>
+										<p>{order.table.name} &nbsp;</p>
+										{order.positions.map((position: any) => <p>{position.name} &nbsp;</p>)}
 										<div>
 											<Link className="btn btn-warning ml-10 " to={`../Order/Edit/${order._id}`}>
 												Edit
