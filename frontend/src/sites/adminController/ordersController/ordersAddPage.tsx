@@ -7,9 +7,10 @@ import '../../../css.css';
 export const OrdersAddPage = () => {
 	const [ employeeName, setEmployeeName ] = useState('');
 	const [ employeeSurname, setEmployeeSurname ] = useState('');
-	const [ positions, setPositions ] = useState([]);
-
+	let [ position, setPosition ] = useState<any>();
+	const [ positions, setPositions ] = useState<any[]>([]);
 	let navigate = useNavigate();
+
 	//GetDishes
 	const [ backendData, setBackendData ] = useState([]);
 
@@ -19,6 +20,11 @@ export const OrdersAddPage = () => {
 		});
 	}, []);
 
+	const AddPosition = async (e: SyntheticEvent) => {
+		e.preventDefault();
+		positions.push(position);
+		console.log(positions);
+	};
 	const SubmitHandler = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		//Api connect POST User
@@ -55,10 +61,7 @@ export const OrdersAddPage = () => {
 								value={employeeSurname}
 								onChange={(e: any) => setEmployeeSurname(e.target.value)}
 							/>
-							<Form.Select aria-label="Default select example">
-								<option value="1">Two</option>
-							</Form.Select>
-							<Form.Select value={positions}>
+							<Form.Select value={position} onChange={(e: any) => setPosition(e.target.value)}>
 								<option>Positions</option>
 								{backendData.map((item: any) => {
 									return (
@@ -68,6 +71,16 @@ export const OrdersAddPage = () => {
 									);
 								})}
 							</Form.Select>
+							<Button
+								type="submit"
+								variant="success"
+								onClick={(e: any) => {
+									e.preventDefault();
+									setPositions((positions) => [ ...positions, position ]);
+								}}
+							>
+								Submit
+							</Button>
 							<Form.Control
 								type="date"
 								placeholder="Enter date*"
@@ -80,7 +93,9 @@ export const OrdersAddPage = () => {
 								value={employeeSurname}
 								onChange={(e: any) => setEmployeeSurname(e.target.value)}
 							/>
+							<p>{JSON.stringify(positions)}</p>
 						</Form.Group>
+
 						<Button type="submit" variant="success">
 							Submit
 						</Button>

@@ -1,20 +1,25 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useState } from 'react';
-import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
+import { Row, Col, FormGroup, Form, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../css.css';
 export const IncomePage = () => {
 	const [ start, setStart ] = useState('');
 	const [ end, setEnd ] = useState('');
 	const [ price, setPrice ] = useState('');
-
+	const [ backendData, setBackendData ] = useState<any>([]);
 	let navigate = useNavigate();
 	const SubmitHandler = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		//Api connect POST User
 		await axios.get(`/Reports/Income/${start}/${end}`).then((res) => {
-			setPrice(res.data);
 			console.log(res.data);
+			setPrice(res.data);
+		});
+
+		await axios.get(`/Reports/Orders/${start}/${end}`).then((res) => {
+			console.log(res.data);
+			setBackendData(res.data);
 		});
 	};
 	return (
@@ -46,6 +51,15 @@ export const IncomePage = () => {
 							Cancel
 						</Link>
 					</Form>
+					<ListGroup>
+						{backendData.map((order: any) => (
+							<ListGroupItem className="d-flex">
+								<p>{order.price}</p>
+								{order.positions.map((positions: any) => <p>{positions.name} </p>)}
+								<p>{order.date}</p>
+							</ListGroupItem>
+						))}
+					</ListGroup>
 					<div>price: {price}</div>
 				</Col>
 

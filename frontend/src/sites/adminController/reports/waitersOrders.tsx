@@ -16,6 +16,13 @@ export const WaitersOrdersPage = () => {
 		});
 	}, []);
 
+	//Get Employees
+	const employees = backendData.map((backendData: any) => {
+		return <p>{backendData.name}</p>;
+	});
+	const positions = employees.map((backendData: any) => {
+		return <p>{backendData.name}</p>;
+	});
 	return (
 		<div className="">
 			<Row>
@@ -24,11 +31,8 @@ export const WaitersOrdersPage = () => {
 					<div className="col-md-5 Panel">
 						<div className="MenuCrudMain">
 							<ListGroup>
-								{backendData.map((report: any) => (
-									<ListGroupItem className="d-flex">
-										<p>{report.name} &nbsp;</p>
-										<p>{report.surname} &nbsp; </p>
-									</ListGroupItem>
+								{employees.map((report: any) => (
+									<ListGroupItem className="d-flex">{report.name}</ListGroupItem>
 								))}
 							</ListGroup>
 						</div>

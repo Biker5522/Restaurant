@@ -28,10 +28,10 @@ router.get('/WaitersOrders', async (req: Request, res: Response) => {
 	}
 });
 //Zwraca zamówienia w danym przedziale
-router.get('/Zamowienia/:start/:end', async (req: Request, res: Response) => {
+router.get('/Orders/:start/:end', async (req: Request, res: Response) => {
 	try {
 		var returnList: any[] = [];
-		const orders = await Order.find().populate('table').populate('employee');
+		const orders = await Order.find().populate('table').populate('employee').populate('positions');
 		for (const element of orders) {
 			if (
 				Date.parse(element.date) >= Date.parse(req.params.start) &&

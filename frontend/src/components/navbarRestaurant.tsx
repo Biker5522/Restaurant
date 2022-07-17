@@ -68,15 +68,6 @@ function NavbarRestaurant() {
 										</NavDropdown.Item>
 									</NavDropdown>
 
-									<NavDropdown title="Reports" id="basic-nav-dropdown">
-										<NavDropdown.Item as={Link} to={'/Reports/WaiterOrders'}>
-											Orders per waiter
-										</NavDropdown.Item>
-										<NavDropdown.Item as={Link} to={'/Reports/Income'}>
-											Income
-										</NavDropdown.Item>
-									</NavDropdown>
-
 									<NavDropdown title="Employees" id="basic-nav-dropdown">
 										<NavDropdown.Item as={Link} to={'/Employees/List'}>
 											Employees List
@@ -95,9 +86,14 @@ function NavbarRestaurant() {
 										</NavDropdown.Item>
 									</NavDropdown>
 
-									<Nav.Link as={Link} to={'/Tables'}>
-										Stoliki
-									</Nav.Link>
+									<NavDropdown title="Reports" id="basic-nav-dropdown">
+										<NavDropdown.Item as={Link} to={'/Reports/WaiterOrders'}>
+											Orders per waiter
+										</NavDropdown.Item>
+										<NavDropdown.Item as={Link} to={'/Reports/Income'}>
+											Income
+										</NavDropdown.Item>
+									</NavDropdown>
 								</Nav>
 								<Nav>
 									<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
@@ -146,9 +142,6 @@ function NavbarRestaurant() {
 									<Nav.Link as={Link} to={'/Menu'}>
 										Menu
 									</Nav.Link>
-									<Nav.Link as={Link} to={'/Stoliki'}>
-										Stoliki
-									</Nav.Link>
 								</Nav>
 								<Nav>
 									<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
@@ -181,9 +174,6 @@ function NavbarRestaurant() {
 								</Nav.Link>
 								<Nav.Link as={Link} to={'/Menu'}>
 									Menu
-								</Nav.Link>
-								<Nav.Link as={Link} to={'/Stoliki'}>
-									Stoliki
 								</Nav.Link>
 							</Nav>
 							<Nav>
