@@ -33,7 +33,7 @@ export const LoginPage = () => {
 	};
 	return (
 		<div>
-			<Row>
+			<Row className="m-0 p-0">
 				<Col sm={2} />
 				<Col sm={8}>
 					<div>

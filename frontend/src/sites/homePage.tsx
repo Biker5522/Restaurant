@@ -5,9 +5,8 @@ import '../stylesheets/home.css';
 export const Home = () => {
 	return (
 		<div className="">
-			<Row>
+			<Row className="m-0 p-0">
 				<Col sm={2} />
-
 				<Col sm={8} className="MainRow">
 					<div className="DiscountElements">
 						{/* Discount Stack */}
@@ -40,7 +39,7 @@ export const Home = () => {
 						</Stack>
 					</div>
 				</Col>
-				<Col sm={2} />
+				<Col sm={3} />
 			</Row>
 		</div>
 	);

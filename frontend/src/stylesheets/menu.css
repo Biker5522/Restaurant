@@ -1,0 +1,26 @@
+.Menu {
+	color: rgb(207, 173, 135);
+	background-color: rgb(255, 255, 255);
+	font-style: italic;
+	padding: 20px;
+	padding-left: 110px;
+	padding-right: 110px;
+	margin-left: 150px;
+	margin-right: 150px;
+	border: 4px rgb(207, 173, 135) dashed;
+	text-transform: uppercase;
+}
+
+.menuTable {
+	padding: 0px;
+	margin-top: 10px;
+	display: block;
+
+	color: rgb(207, 173, 135);
+	border: 1px solid rgb(207, 173, 135);
+}
+.menuTable h2 {
+	background-color: rgb(207, 173, 135);
+	color: azure;
+	font-size: 27px;
+}
