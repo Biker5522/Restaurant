@@ -1,4 +1,4 @@
-.LoginCard {
+.Card {
 	margin: 40px auto;
 	width: 45%;
 	min-height: 21rem;
@@ -8,8 +8,15 @@
 	background-color: white;
 	border-radius: 40px;
 }
-
+.MenuCrudMain{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap
+}
 .Button {
 	font-size: 1vw;
 	width: 50%;
+}
+.listButtons{
+	float: right;
 }

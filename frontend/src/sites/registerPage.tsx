@@ -10,7 +10,8 @@ import {LoginPage} from '../sites/loginPage'
 
 export const RegisterPage = () => {
 	const [ email, setEmail ] = useState('');
-	const [ password, setPass ] = useState('');
+	const [ password, setPassword ] = useState('');
+	const [ errorMsg, setErrorMsg ] = useState('');
 
 	let navigate = useNavigate();
 	const SubmitHandler = async (e: SyntheticEvent) => {
@@ -19,8 +20,16 @@ export const RegisterPage = () => {
 		await axios.post('/register', {
 				email: email,
 				password: password
-		});
-		navigate("/Login");
+		})
+		.then(()=>{
+			navigate("/Login");
+		})
+		.catch((error) => {
+			if( error.response ){
+				setErrorMsg(error.response.data) ;
+			}
+		});;
+		
 	};
 
 	return (
@@ -32,6 +41,7 @@ export const RegisterPage = () => {
 						{/* Email Form */}
 						<div className="LoginCard">
 						<h2>Register</h2>
+						<h5 className='alert-danger'>{errorMsg}</h5>
 							<Form onSubmit={SubmitHandler}>
 								<Form.Group className="mb-3" controlId="formBasicEmail">
 									<Form.Label>Adres Email</Form.Label>
@@ -50,13 +60,9 @@ export const RegisterPage = () => {
 										type="password"
 										placeholder="Hasło"
 										value={password}
-										onChange={(e: any) => setPass(e.target.value)}
+										onChange={(e: any) => setPassword(e.target.value)}
 									/>
 								</Form.Group>
-								<Form.Group className="mb-3" controlId="formBasicCheckbox">
-									<Form.Check type="checkbox" label="Zapamiętaj mnie" />
-								</Form.Group>
-
 								{/* Button */}
 								<div className="ButtonsContainer">
 									<Button
@@ -65,7 +71,7 @@ export const RegisterPage = () => {
 										type="submit"
 										style={{ margin: '0.5rem auto ' }}
 									>
-										Zaloguj
+										Zarejestruj
 									</Button>
 								</div>
 							</Form>

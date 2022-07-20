@@ -9,6 +9,7 @@ import { useCookies } from 'react-cookie';
 export const LoginPage = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
+	let [ errorMsg, setError ] = useState('');
 	const [ cookies, setCookie ] = useCookies([ 'token', 'refresh_token' ]);
 	let navigate = useNavigate();
 	const SubmitHandler = async (e: SyntheticEvent) => {
@@ -27,9 +28,15 @@ export const LoginPage = () => {
 			.then((res) => {
 				setCookie('token', res.data);
 				console.log(res.data);
+				navigate('/');
+			})
+			.catch((error) => {
+				if( error.response ){
+					setError(error.response.data) ;
+				}
 			});
 
-		navigate('/');
+		
 	};
 	return (
 		<div>
@@ -39,6 +46,7 @@ export const LoginPage = () => {
 					<div>
 						<div className="LoginCard">
 							<h2>Login</h2>
+							<h5 className='alert-danger'>{errorMsg}</h5>
 							<Form onSubmit={SubmitHandler}>
 								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -49,7 +57,7 @@ export const LoginPage = () => {
 										value={email}
 										onChange={(e: any) => setEmail(e.target.value)}
 									/>
-								</Form.Group>
+								</Form.Group>	
 								{/* Password Form */}
 								<Form.Group className="mb-3" controlId="formBasicPassword">
 									<Form.Label>Hasło</Form.Label>
@@ -59,9 +67,6 @@ export const LoginPage = () => {
 										value={password}
 										onChange={(e: any) => setPassword(e.target.value)}
 									/>
-								</Form.Group>
-								<Form.Group className="mb-3" controlId="formBasicCheckbox">
-									<Form.Check type="checkbox" label="Zapamiętaj mnie" />
 								</Form.Group>
 								<div className="ButtonsContainer">
 									{/* Button */}

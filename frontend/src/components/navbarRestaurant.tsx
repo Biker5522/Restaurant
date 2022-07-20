@@ -48,9 +48,11 @@ function NavbarRestaurant() {
 			return (
 				<Router>
 					<div className="Navbar">
-						<Navbar bg="light" variant="light">
+						<Navbar bg="light" variant="light" expand="lg">
 							<Container>
 								<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
+								<Navbar.Toggle aria-controls="basic-navbar-nav" />
+      							  <Navbar.Collapse id="basic-navbar-nav">
 								<Nav className="me-auto">
 									<Nav.Link as={Link} to={'/'}>
 										Home
@@ -87,9 +89,7 @@ function NavbarRestaurant() {
 									</NavDropdown>
 
 									<NavDropdown title="Reports" id="basic-nav-dropdown">
-										<NavDropdown.Item as={Link} to={'/Reports/WaiterOrders'}>
-											Orders per waiter
-										</NavDropdown.Item>
+										
 										<NavDropdown.Item as={Link} to={'/Reports/Income'}>
 											Income
 										</NavDropdown.Item>
@@ -100,6 +100,7 @@ function NavbarRestaurant() {
 										Wyloguj
 									</Nav.Link>
 								</Nav>
+								</Navbar.Collapse>
 							</Container>
 						</Navbar>
 					</div>

@@ -3,7 +3,7 @@ import { Row, Col, Card, Button, Stack, ListGroupItem, ListGroup } from 'react-b
 import { Link } from 'react-router-dom';
 import { MenuHeaderComponent } from './menuHeaderComponent';
 import '../../../css.css';
-import '../../../stylesheets/adminPanels.css';
+import '../../../stylesheets/adminController.css';
 import axios from 'axios';
 import { Console } from 'console';
 
@@ -38,25 +38,29 @@ export const MenuListPage = () => {
 				<Col sm={8} className="MainRow">
 					<div className="col-md-5 Panel">
 						<MenuHeaderComponent />
-						<div className="MenuCrudMain">
-							<ListGroup>
+						<div className="MenuCrudMain ">
+							<ListGroup >
 								{backendData.map((dish: any) => (
-									<ListGroupItem className="d-flex">
-										<p>{dish.name} &nbsp;</p>
-										<strong>{dish.category} &nbsp; </strong>
-										<p>{dish.price} </p>
-										<div>
-											<Link className="btn btn-warning ml-10 " to={`../Menu/Edit/${dish._id}`}>
+									<ListGroupItem>
+										<div className='d-grid'>
+										<p>{dish.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<strong>{dish.category}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+										{dish.price}$</p>
+										<div className='listButtons'>
+											<Link className="btn btn-warning  mr-1 " to={`../Menu/Edit/${dish._id}`}>
 												Edit
 											</Link>
 											<Button
-												className="btn btn-warning ml-10 "
+												className="btn btn-warning  mr-1 "
 												onClick={() => removeDish(dish._id)}
 												variant="danger"
 											>
 												Delete
 											</Button>
 										</div>
+										</div>
+										
+										
 									</ListGroupItem>
 								))}
 							</ListGroup>

@@ -10,9 +10,12 @@ body {
 	font-weight: bold;
 	color: black;
 }
+.Main{
+	width: 100%;
+}
 .MainRow {
 	background-color: #ffffff;
-	height: 800px;
+	min-height: 800px;
 }
 .Row {
 	margin: 0;

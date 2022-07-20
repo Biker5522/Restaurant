@@ -71,17 +71,6 @@ export const Menu = () => {
 				</Fragment>
 			);
 	});
-	//Get Desserts
-	const arrayDesserts = backendData.map((backendData: any) => {
-		if (backendData.category == 'dessert')
-			return (
-				<Fragment>
-					<p>
-						{backendData.name} {backendData.price}$
-					</p>
-				</Fragment>
-			);
-	});
 
 	return (
 		<div>
@@ -89,47 +78,33 @@ export const Menu = () => {
 				<Col sm={2} />
 				<Col sm={8} className="MainRow">
 					<div className="Menu">
-						<Row>
-							<h2>THE</h2>
+						
+							<h1>THE</h1>
 							<h1>MENU</h1>
-							<Col sm={4}>
+							<div className="menuTable">
+									<h2>Main Course</h2>
+									<div>{mainDishes}</div>
+								</div>
+
 								<div className="menuTable">
 									<h2>Burgers</h2>
 									<div>{arrayBurgers}</div>
 								</div>
+
 								<div className="menuTable">
 									<h2>Snacks</h2>
 									<div>{arraySnacks}</div>
 								</div>
-								<Row />
-							</Col>
-							<Col sm={8}>
+	
 								<div className="menuTable">
-									<h2>Main Course</h2>
-									<div>{mainDishes}</div>
+									<h2>Pizza</h2>
+									<div>{arrayPizza}</div>
 								</div>
-								<Row>
-									<Col sm>
-										<div className="menuTable">
-											<h2>Pizza</h2>
-											<div>{arrayPizza}</div>
-										</div>
-									</Col>
-									<Col sm>
-										<div className="menuTable">
-											<h2>Drinks</h2>
-											<div>{arrayDrinks}</div>
-										</div>
-									</Col>
-								</Row>
-							</Col>
-						</Row>
-						<Col sm={12}>
-							<div className="menuTable">
-								<h2>Desserts</h2>
-								<div>{arrayDesserts}</div>
-							</div>
-						</Col>
+									
+								<div className="menuTable">
+									<h2>Drinks</h2>
+									<div>{arrayDrinks}</div>
+								</div>
 					</div>
 				</Col>
 				<Col sm={2} />
