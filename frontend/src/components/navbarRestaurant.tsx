@@ -48,58 +48,57 @@ function NavbarRestaurant() {
 			return (
 				<Router>
 					<div className="Navbar">
-						<Navbar bg="light" variant="light" expand="lg">
+						<Navbar variant="dark" expand="lg">
 							<Container>
 								<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
 								<Navbar.Toggle aria-controls="basic-navbar-nav" />
-      							  <Navbar.Collapse id="basic-navbar-nav">
-								<Nav className="me-auto">
-									<Nav.Link as={Link} to={'/'}>
-										Home
-									</Nav.Link>
+								<Navbar.Collapse id="basic-navbar-nav">
+									<Nav className="me-auto">
+										<Nav.Link as={Link} to={'/'}>
+											Home
+										</Nav.Link>
 
-									<NavDropdown title="Menu" id="basic-nav-dropdown">
-										<NavDropdown.Item as={Link} to={'/Menu'}>
-											User Menu
-										</NavDropdown.Item>
-										<NavDropdown.Item as={Link} to={'/Menu/List'}>
-											List of Dishes
-										</NavDropdown.Item>
-										<NavDropdown.Item as={Link} to={'/Menu/Add'}>
-											Add Dish
-										</NavDropdown.Item>
-									</NavDropdown>
+										<NavDropdown title="Menu" id="basic-nav-dropdown">
+											<NavDropdown.Item as={Link} to={'/Menu'}>
+												User Menu
+											</NavDropdown.Item>
+											<NavDropdown.Item as={Link} to={'/Menu/List'}>
+												List of Dishes
+											</NavDropdown.Item>
+											<NavDropdown.Item as={Link} to={'/Menu/Add'}>
+												Add Dish
+											</NavDropdown.Item>
+										</NavDropdown>
 
-									<NavDropdown title="Employees" id="basic-nav-dropdown">
-										<NavDropdown.Item as={Link} to={'/Employees/List'}>
-											Employees List
-										</NavDropdown.Item>
-										<NavDropdown.Item as={Link} to={'/Employees/Add'}>
-											Add Employee
-										</NavDropdown.Item>
-									</NavDropdown>
+										<NavDropdown title="Employees" id="basic-nav-dropdown">
+											<NavDropdown.Item as={Link} to={'/Employees/List'}>
+												Employees List
+											</NavDropdown.Item>
+											<NavDropdown.Item as={Link} to={'/Employees/Add'}>
+												Add Employee
+											</NavDropdown.Item>
+										</NavDropdown>
 
-									<NavDropdown title="Orders" id="basic-nav-dropdown">
-										<NavDropdown.Item as={Link} to={'/Orders/List'}>
-											Orders List
-										</NavDropdown.Item>
-										<NavDropdown.Item as={Link} to={'/Orders/Add'}>
-											Add Order
-										</NavDropdown.Item>
-									</NavDropdown>
+										<NavDropdown title="Orders" id="basic-nav-dropdown">
+											<NavDropdown.Item as={Link} to={'/Orders/List'}>
+												Orders List
+											</NavDropdown.Item>
+											<NavDropdown.Item as={Link} to={'/Orders/Add'}>
+												Add Order
+											</NavDropdown.Item>
+										</NavDropdown>
 
-									<NavDropdown title="Reports" id="basic-nav-dropdown">
-										
-										<NavDropdown.Item as={Link} to={'/Reports/Income'}>
-											Income
-										</NavDropdown.Item>
-									</NavDropdown>
-								</Nav>
-								<Nav>
-									<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
-										Wyloguj
-									</Nav.Link>
-								</Nav>
+										<NavDropdown title="Reports" id="basic-nav-dropdown">
+											<NavDropdown.Item as={Link} to={'/Reports/Income'}>
+												Income
+											</NavDropdown.Item>
+										</NavDropdown>
+									</Nav>
+									<Nav>
+										<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
+											Wyloguj
+										</Nav.Link>
+									</Nav>
 								</Navbar.Collapse>
 							</Container>
 						</Navbar>

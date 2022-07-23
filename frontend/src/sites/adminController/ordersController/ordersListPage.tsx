@@ -36,18 +36,22 @@ export const OrdersListPage = () => {
 
 				<Col sm={8} className="MainRow">
 					<div className="col-md-5 Panel">
-						<OrdersHeaderComponent />
 						<div className="MenuCrudMain">
+							<OrdersHeaderComponent />
 							<ListGroup>
 								{backendData.map((order: any) => (
-									<ListGroupItem className="d-flex">
-										<p>{order.employee.name} &nbsp;</p>
-										<p>{order.employee.surname} &nbsp;</p>
-										<p>{order.price} &nbsp;</p>
-										<p>{order.date} &nbsp;</p>
-										<p>{order.status} &nbsp;</p>
-										<p>{order.table.name} &nbsp;</p>
+									<ListGroupItem className="d-grid">
+										<p>
+											{order.employee.name} &nbsp;{order.employee.surname} &nbsp;{order.status}{' '}
+											&nbsp;{order.table.name}
+										</p>
+										<h4>Positions:</h4>
 										{order.positions.map((position: any) => <p>{position.name} &nbsp;</p>)}
+										<p>
+											{' '}
+											Date: {order.date}
+											&nbsp;
+										</p>
 										<div>
 											<Link className="btn btn-warning ml-10 " to={`../Order/Edit/${order._id}`}>
 												Edit

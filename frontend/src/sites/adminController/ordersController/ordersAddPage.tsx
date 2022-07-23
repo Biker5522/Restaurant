@@ -40,69 +40,81 @@ export const OrdersAddPage = () => {
 				<Col sm={2} />
 
 				<Col sm={8} className="MainRow">
-					<Form onSubmit={SubmitHandler}>
-						<Form.Group>
-							<Form.Label>New Order</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Enter employee name"
-								value={employeeName}
-								onChange={(e: any) => setEmployeeName(e.target.value)}
-							/>
-							<Form.Control
-								type="text"
-								placeholder="Enter employee surname"
-								value={employeeSurname}
-								onChange={(e: any) => setEmployeeSurname(e.target.value)}
-							/>
-							<Form.Control
-								type="text"
-								placeholder="Enter table"
-								value={employeeSurname}
-								onChange={(e: any) => setEmployeeSurname(e.target.value)}
-							/>
-							<Form.Select value={position} onChange={(e: any) => setPosition(e.target.value)}>
-								<option>Positions</option>
-								{backendData.map((item: any) => {
-									return (
-										<option key={item._id} value={item.name}>
-											{item.name} {item.price}$
-										</option>
-									);
-								})}
-							</Form.Select>
-							<Button
-								type="submit"
-								variant="success"
-								onClick={(e: any) => {
-									e.preventDefault();
-									setPositions((positions) => [ ...positions, position ]);
-								}}
-							>
+					<div className="Card">
+						<h2>New Order</h2>
+						<Form onSubmit={SubmitHandler}>
+							<Form.Group>
+								<Form.Label>Employee Name</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter employee name"
+									value={employeeName}
+									onChange={(e: any) => setEmployeeName(e.target.value)}
+								/>
+								<Form.Label>Employee Surname</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter employee surname"
+									value={employeeSurname}
+									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+								/>
+								<Form.Label>Table</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter table"
+									value={employeeSurname}
+									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+								/>
+
+								<Form.Label>Date*</Form.Label>
+								<Form.Control
+									type="date"
+									placeholder="Enter date*"
+									value={employeeSurname}
+									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+								/>
+								<Form.Label>Price*</Form.Label>
+								<Form.Control
+									type="number"
+									placeholder="Enter price*"
+									value={employeeSurname}
+									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+								/>
+								<Form.Label>Add Position</Form.Label>
+								<Form.Select value={position} onChange={(e: any) => setPosition(e.target.value)}>
+									<option>Positions</option>
+									{backendData.map((item: any) => {
+										return (
+											<option key={item._id} value={item.name}>
+												{item.name} {item.price}$
+											</option>
+										);
+									})}
+								</Form.Select>
+								<Button
+									type="submit"
+									variant="success"
+									onClick={(e: any) => {
+										e.preventDefault();
+										setPositions((positions) => [ ...positions, position ]);
+									}}
+								>
+									Add Position
+								</Button>
+								<h3>Positions</h3>
+								<div style={{ border: '1px solid black' }}>
+									<p>{JSON.stringify(positions)}</p>
+								</div>
+							</Form.Group>
+
+							<Button type="submit" variant="success">
 								Submit
 							</Button>
-							<Form.Control
-								type="date"
-								placeholder="Enter date*"
-								value={employeeSurname}
-								onChange={(e: any) => setEmployeeSurname(e.target.value)}
-							/>
-							<Form.Control
-								type="number"
-								placeholder="Enter price*"
-								value={employeeSurname}
-								onChange={(e: any) => setEmployeeSurname(e.target.value)}
-							/>
-							<p>{JSON.stringify(positions)}</p>
-						</Form.Group>
-
-						<Button type="submit" variant="success">
-							Submit
-						</Button>
-						<Link to="/Orders/List" className="btn btn-danger ml-2">
-							Cancel
-						</Link>
-					</Form>
+							<Link to="/Orders/List" className="btn btn-danger ml-2">
+								Cancel
+							</Link>
+						</Form>
+					</div>
 				</Col>
 
 				<Col sm={2} />

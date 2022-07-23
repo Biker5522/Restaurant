@@ -38,14 +38,14 @@ export const EmployeesListPage = () => {
 
 				<Col sm={8} className="MainRow">
 					<div className="col-md-5 Panel">
-						<EmployeesHeaderComponent />
 						<div className="MenuCrudMain">
+							<EmployeesHeaderComponent />
 							<ListGroup>
 								{backendData.map((employee: any) => (
-									<ListGroupItem className="d-flex">
-										<p>{employee.name} &nbsp;</p>
-										<p>{employee.surname} &nbsp;</p>
-										<p>{employee.position} &nbsp;</p>
+									<ListGroupItem className="d-grid">
+										<p>
+											{employee.name} &nbsp; {employee.surname} &nbsp;{employee.position} &nbsp;
+										</p>
 										<div>
 											<Link
 												className="btn btn-warning ml-10 "

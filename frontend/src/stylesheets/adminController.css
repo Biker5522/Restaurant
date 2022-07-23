@@ -8,15 +8,16 @@
 	background-color: white;
 	border-radius: 40px;
 }
-.MenuCrudMain{
-	display:flex;
+.MenuCrudMain {
+	display: grid;
 	flex-direction: row;
-	flex-wrap: nowrap
+	flex-wrap: nowrap;
+	justify-content: center;
 }
 .Button {
-	font-size: 1vw;
+	font-size: 2vw;
 	width: 50%;
 }
-.listButtons{
+.listButtons {
 	float: right;
 }

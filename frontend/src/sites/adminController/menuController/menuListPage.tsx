@@ -37,30 +37,33 @@ export const MenuListPage = () => {
 
 				<Col sm={8} className="MainRow">
 					<div className="col-md-5 Panel">
-						<MenuHeaderComponent />
 						<div className="MenuCrudMain ">
-							<ListGroup >
+							<MenuHeaderComponent />
+							<ListGroup>
 								{backendData.map((dish: any) => (
 									<ListGroupItem>
-										<div className='d-grid'>
-										<p>{dish.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<strong>{dish.category}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
-										{dish.price}$</p>
-										<div className='listButtons'>
-											<Link className="btn btn-warning  mr-1 " to={`../Menu/Edit/${dish._id}`}>
-												Edit
-											</Link>
-											<Button
-												className="btn btn-warning  mr-1 "
-												onClick={() => removeDish(dish._id)}
-												variant="danger"
-											>
-												Delete
-											</Button>
+										<div className="d-grid">
+											<p>
+												{dish.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<strong>{dish.category}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+												{dish.price}$
+											</p>
+											<div className="listButtons">
+												<Link
+													className="btn btn-warning  mr-1 "
+													to={`../Menu/Edit/${dish._id}`}
+												>
+													Edit
+												</Link>
+												<Button
+													className="btn btn-warning  mr-1 "
+													onClick={() => removeDish(dish._id)}
+													variant="danger"
+												>
+													Delete
+												</Button>
+											</div>
 										</div>
-										</div>
-										
-										
 									</ListGroupItem>
 								))}
 							</ListGroup>

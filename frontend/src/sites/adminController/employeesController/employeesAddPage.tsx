@@ -26,35 +26,40 @@ export const EmployeesAddPage = () => {
 				<Col sm={2} />
 
 				<Col sm={8} className="MainRow">
-					<Form onSubmit={SubmitHandler}>
-						<Form.Group>
-							<Form.Label>New Employee</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Enter name"
-								value={name}
-								onChange={(e: any) => setName(e.target.value)}
-							/>
-							<Form.Control
-								type="text"
-								placeholder="Enter surname"
-								value={surname}
-								onChange={(e: any) => setSurname(e.target.value)}
-							/>
-							<Form.Control
-								type="text"
-								placeholder="Enter Position"
-								value={position}
-								onChange={(e: any) => setPosition(e.target.value)}
-							/>
-						</Form.Group>
-						<Button type="submit" variant="success">
-							Submit
-						</Button>
-						<Link to="/Employees/List" className="btn btn-danger ml-2">
-							Cancel
-						</Link>
-					</Form>
+					<div className="Card">
+						<h2>Add Employee</h2>
+						<Form onSubmit={SubmitHandler}>
+							<Form.Group>
+								<Form.Label>Name</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter name"
+									value={name}
+									onChange={(e: any) => setName(e.target.value)}
+								/>
+								<Form.Label>Surname</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter surname"
+									value={surname}
+									onChange={(e: any) => setSurname(e.target.value)}
+								/>
+								<Form.Label>Position</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter Position"
+									value={position}
+									onChange={(e: any) => setPosition(e.target.value)}
+								/>
+							</Form.Group>
+							<Button type="submit" variant="success">
+								Submit
+							</Button>
+							<Link to="/Employees/List" className="btn btn-danger ml-2">
+								Cancel
+							</Link>
+						</Form>
+					</div>
 				</Col>
 
 				<Col sm={2} />
