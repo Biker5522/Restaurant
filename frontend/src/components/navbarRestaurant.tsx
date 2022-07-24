@@ -132,7 +132,7 @@ function NavbarRestaurant() {
 			return (
 				<Router>
 					<div className="Navbar">
-						<Navbar bg="light" variant="light">
+						<Navbar variant="dark">
 							<Container>
 								<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
 								<Nav className="me-auto">
@@ -165,7 +165,7 @@ function NavbarRestaurant() {
 		return (
 			<Router>
 				<div className="Navbar">
-					<Navbar bg="light" variant="light">
+					<Navbar variant="dark">
 						<Container>
 							<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
 							<Nav className="me-auto">

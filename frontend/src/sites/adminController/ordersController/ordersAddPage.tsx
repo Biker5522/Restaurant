@@ -9,6 +9,7 @@ export const OrdersAddPage = () => {
 	const [ employeeSurname, setEmployeeSurname ] = useState('');
 	let [ position, setPosition ] = useState<any>();
 	const [ positions, setPositions ] = useState<any[]>([]);
+	let [ errorMsg, setError ] = useState('');
 	let navigate = useNavigate();
 
 	//GetDishes
@@ -28,11 +29,16 @@ export const OrdersAddPage = () => {
 	const SubmitHandler = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		//Api connect POST User
-		await axios.post('/Orders', {
-			employename: employeeName,
-			employeSurname: employeeSurname
-		});
-		navigate('/Employees/List');
+		await axios
+			.post('/Orders', {
+				employename: employeeName,
+				employeSurname: employeeSurname
+			})
+			.catch((error) => {
+				if (error.response) {
+					setError(error.response.data);
+				}
+			});
 	};
 	return (
 		<div className="">
@@ -42,6 +48,7 @@ export const OrdersAddPage = () => {
 				<Col sm={8} className="MainRow">
 					<div className="Card">
 						<h2>New Order</h2>
+						<h5 className="alert-danger">{errorMsg}</h5>
 						<Form onSubmit={SubmitHandler}>
 							<Form.Group>
 								<Form.Label>Employee Name</Form.Label>

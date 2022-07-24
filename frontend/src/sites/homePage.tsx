@@ -8,7 +8,7 @@ export const Home = () => {
 			<Row className="m-0 p-0">
 				<Col sm={2} />
 				<Col sm={8} className="MainRow">
-					<div className="DiscountElements flex items-stretch">
+					<div className="DiscountElements">
 						{/* Discount Card */}
 						<div className="DiscountCard item1 ">
 							<Card>

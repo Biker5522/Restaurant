@@ -5,6 +5,7 @@
 	padding: 1% 5% 1% 5%;
 	margin-left: 15%;
 	margin-right: 150px;
+	margin-top: 15px;
 	border: 4px rgb(33, 33, 33) dashed;
 	text-transform: uppercase;
 }
@@ -13,11 +14,11 @@
 	padding: 0px;
 	margin-bottom: 3%;
 	margin-top: 10px;
-	display: block;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: rgb(0, 0, 0);
 	border: 1px solid rgb(207, 173, 135);
+	background-color: aliceblue;
 }
 .menuTable h2 {
 	background-color: rgb(0, 0, 0);
