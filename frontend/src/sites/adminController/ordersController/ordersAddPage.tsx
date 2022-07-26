@@ -7,6 +7,7 @@ import '../../../css.css';
 export const OrdersAddPage = () => {
 	const [ employeeName, setEmployeeName ] = useState('');
 	const [ employeeSurname, setEmployeeSurname ] = useState('');
+	let [ table, setTable ] = useState('');
 	let [ position, setPosition ] = useState<any>();
 	const [ positions, setPositions ] = useState<any[]>([]);
 	let [ errorMsg, setError ] = useState('');
@@ -14,10 +15,19 @@ export const OrdersAddPage = () => {
 
 	//GetDishes
 	const [ backendData, setBackendData ] = useState([]);
+	const [ tables, setTables ] = useState([]);
 
 	useEffect(() => {
 		axios('/Menu').then((res) => {
+			console.log(res.data.dishes);
 			setBackendData(res.data.dishes);
+		});
+	}, []);
+
+	useEffect(() => {
+		axios('/Tables').then((res) => {
+			console.log(res.data.tables);
+			setTables(res.data.tables);
 		});
 	}, []);
 
@@ -32,7 +42,8 @@ export const OrdersAddPage = () => {
 		await axios
 			.post('/Orders', {
 				employename: employeeName,
-				employeSurname: employeeSurname
+				employeSurname: employeeSurname,
+				table: table
 			})
 			.catch((error) => {
 				if (error.response) {
@@ -72,6 +83,17 @@ export const OrdersAddPage = () => {
 									value={employeeSurname}
 									onChange={(e: any) => setEmployeeSurname(e.target.value)}
 								/>
+								<Form.Label>Table</Form.Label>
+								<Form.Select value={table} onChange={(e: any) => setTable(e.target.value)}>
+									<option>Tables</option>
+									{tables.map((item: any) => {
+										return (
+											<option key={item._id} value={item.name}>
+												{item.name}
+											</option>
+										);
+									})}
+								</Form.Select>
 
 								<Form.Label>Date*</Form.Label>
 								<Form.Control

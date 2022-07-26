@@ -1,5 +1,7 @@
+import { Console } from 'console';
 import { Express, Router, Response, Request } from 'express';
 import { appendFile } from 'fs';
+import { ObjectId } from 'mongoose';
 const express = require('express');
 const router = express.Router();
 const Order = require('../Models/OrderModel');
@@ -59,7 +61,48 @@ router.post('/', async (req: Request, res: Response) => {
 		return res.status(400).json({ result });
 	}
 });
+//POST dodanie zamówienia
+router.post('/Online', async (req: Request, res: Response) => {
+	//Validation of
+	//dishes
+	let positionsChecked: any[] = [];
+	for (const element of req.body.positions) {
+		console.log(element);
+		let DishExist: any = await Dish.findOne({ name: element });
+		if (!DishExist) return res.status(400).json('No such Dish');
+		let returnDish = DishExist;
 
+		console.log(DishExist._id);
+		positionsChecked.push(returnDish._id);
+		console.log(positionsChecked);
+	}
+	const order = new Order({
+		positions: positionsChecked,
+		date: req.body.date,
+		phone: req.body.phone,
+		email: req.body.email,
+		street: req.body.street,
+		flatNumber: req.body.flatNumber
+	});
+	order.isOnline = true;
+
+	//calculate price
+	if (order.price == null || order.price == 0) {
+		order.price = 0;
+		for (const element of order.positions) {
+			const DishExisting = await Dish.findById(element);
+			order.price = order.price + DishExisting.price;
+		}
+	}
+	//Save an order
+	try {
+		const savedOrder = await order.save();
+		return res.status(200).json(savedOrder);
+	} catch (err) {
+		const result = (err as Error).message;
+		return res.status(400).json({ result });
+	}
+});
 //GET Order
 router.get('/:id', async (req: Request, res: Response) => {
 	try {

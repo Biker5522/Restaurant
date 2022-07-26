@@ -1,0 +1,44 @@
+.OrderMain {
+	display: flex;
+	justify-content: center;
+	column-gap: 20px;
+	flex-wrap: wrap;
+}
+.Card {
+	margin: 30px auto;
+	max-width: 50%;
+	min-width: 300px;
+	min-height: 21rem;
+	align-items: center;
+	padding: 30px;
+	margin-bottom: 1rem;
+	background-color: white;
+	border-radius: 40px;
+	margin-right: 0px;
+	margin-left: 0;
+}
+
+.Button {
+	font-size: 1vw;
+	width: 50%;
+}
+.OrderSmallRow {
+	align-items: center;
+	margin: 30px auto;
+	background-color: azure;
+	width: 30%;
+	min-width: 250px;
+	align-items: center;
+	padding: 30px;
+	margin-bottom: 5rem;
+	background-color: rgb(255, 255, 255);
+	border-radius: 40px;
+	margin-left: 0px;
+	margin-right: 0;
+	overflow-wrap: break-word;
+	margin-bottom: 10px;
+}
+.SubmitButton {
+	margin-top: 140%;
+	margin-bottom: 0%;
+}

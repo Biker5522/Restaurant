@@ -20,6 +20,7 @@ import { EmployeesListPage } from '../sites/adminController/employeesController/
 import { EmployeesAddPage } from '../sites/adminController/employeesController/employeesAddPage';
 import { EmployeesEditPage } from '../sites/adminController/employeesController/employeesEditPage';
 
+import { OrderPage } from '../sites/orderPage';
 import { OrdersListPage } from '../sites/adminController/ordersController/ordersListPage';
 import { OrdersAddPage } from '../sites/adminController/ordersController/ordersAddPage';
 import { OrdersEditPage } from '../sites/adminController/ordersController/ordersEditPage';
@@ -31,11 +32,11 @@ function NavbarRestaurant() {
 	//Get token from cookies
 	const [ cookies, setCookie, removeCookie ] = useCookies([ 'token' ]);
 	let token = cookies.token;
-	console.log(token);
 
 	//Logout
 	function Logout() {
 		removeCookie('token');
+		window.location.reload();
 	}
 	//Check is User Logged
 	if (token != null) {
@@ -106,7 +107,6 @@ function NavbarRestaurant() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/Menu" element={<Menu />} />
-						<Route path="/Stoliki" />
 						<Route path="/Login" element={<LoginPage />} />
 						<Route path="/Register" element={<RegisterPage />} />
 
@@ -127,14 +127,56 @@ function NavbarRestaurant() {
 					</Routes>
 				</Router>
 			);
+
 			//User
 		} else {
 			return (
 				<Router>
 					<div className="Navbar">
-						<Navbar variant="dark">
+						<Navbar variant="dark" expand="lg">
 							<Container>
 								<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
+								<Navbar.Toggle aria-controls="basic-navbar-nav" />
+								<Navbar.Collapse id="basic-navbar-nav">
+									<Nav className="me-auto">
+										<Nav.Link as={Link} to={'/'}>
+											Home
+										</Nav.Link>
+										<Nav.Link as={Link} to={'/Menu'}>
+											Menu
+										</Nav.Link>
+										<Nav.Link as={Link} to={'/Order'}>
+											Order Online
+										</Nav.Link>
+									</Nav>
+									<Nav>
+										<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
+											Logout
+										</Nav.Link>
+									</Nav>
+								</Navbar.Collapse>
+							</Container>
+						</Navbar>
+					</div>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/Menu" element={<Menu />} />
+						<Route path="/Login" element={<LoginPage />} />
+						<Route path="/Register" element={<RegisterPage />} />
+						<Route path="/Order" element={<OrderPage />} />
+					</Routes>
+				</Router>
+			);
+		}
+	} else
+		return (
+			<Router>
+				<div className="Navbar">
+					<Navbar variant="dark" expand="lg">
+						<Container>
+							<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
+							<Navbar.Toggle aria-controls="basic-navbar-nav" />
+							<Navbar.Collapse id="basic-navbar-nav">
 								<Nav className="me-auto">
 									<Nav.Link as={Link} to={'/'}>
 										Home
@@ -144,53 +186,20 @@ function NavbarRestaurant() {
 									</Nav.Link>
 								</Nav>
 								<Nav>
-									<Nav.Link as={Link} to={'/'} onClick={Logout} className="d-flex">
-										Wyloguj
+									<Nav.Link as={Link} to={'/Login'}>
+										Login
+									</Nav.Link>
+									<Nav.Link as={Link} to={'/Register'}>
+										Register
 									</Nav.Link>
 								</Nav>
-							</Container>
-						</Navbar>
-					</div>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/Menu" element={<Menu />} />
-						<Route path="/Stoliki" />
-						<Route path="/Login" element={<LoginPage />} />
-						<Route path="/Register" element={<RegisterPage />} />
-					</Routes>
-				</Router>
-			);
-		}
-	} else
-		return (
-			<Router>
-				<div className="Navbar">
-					<Navbar variant="dark">
-						<Container>
-							<Navbar.Brand href="#home">Apollo Restaurant</Navbar.Brand>
-							<Nav className="me-auto">
-								<Nav.Link as={Link} to={'/'}>
-									Home
-								</Nav.Link>
-								<Nav.Link as={Link} to={'/Menu'}>
-									Menu
-								</Nav.Link>
-							</Nav>
-							<Nav>
-								<Nav.Link as={Link} to={'/Login'}>
-									Login
-								</Nav.Link>
-								<Nav.Link as={Link} to={'/Register'}>
-									Register
-								</Nav.Link>
-							</Nav>
+							</Navbar.Collapse>
 						</Container>
 					</Navbar>
 				</div>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/Menu" element={<Menu />} />
-					<Route path="/Stoliki" />
 					<Route path="/Login" element={<LoginPage />} />
 					<Route path="/Register" element={<RegisterPage />} />
 				</Routes>

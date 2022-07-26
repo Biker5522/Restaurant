@@ -29,7 +29,7 @@ app.use('/Menu', routerDishes);
 
 //Tables
 const routerTables = require('../routes/tables');
-app.use('/Stoliki', routerTables);
+app.use('/Tables', routerTables);
 
 //Products
 const routerProducts = require('../routes/products');
@@ -48,7 +48,7 @@ const routerReports = require('../routes/reports');
 app.use('/Reports', routerReports);
 
 app.get('/', (req, res) => {
-	res.send('Restaurany World');
+	res.send('Restaurant World');
 });
 
 //Database
