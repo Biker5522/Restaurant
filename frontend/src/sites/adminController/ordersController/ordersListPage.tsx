@@ -42,14 +42,18 @@ export const OrdersListPage = () => {
 								{backendData.map((order: any) => (
 									<ListGroupItem className="d-grid">
 										<p>
-											{order.employee.name} &nbsp;{order.employee.surname} &nbsp;{order.status}{' '}
-											&nbsp;{order.table.name}
+											<strong>Id: </strong>
+											{order._id}
 										</p>
+										<p>
+											<strong>Status: </strong>
+											{order.status}
+										</p>
+
 										<h4>Positions:</h4>
 										{order.positions.map((position: any) => <p>{position.name} &nbsp;</p>)}
 										<p>
-											{' '}
-											Date: {order.date}
+											<strong>Date:</strong> {order.date}
 											&nbsp;
 										</p>
 										<div>

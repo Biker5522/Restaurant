@@ -184,6 +184,9 @@ function NavbarRestaurant() {
 									<Nav.Link as={Link} to={'/Menu'}>
 										Menu
 									</Nav.Link>
+									<Nav.Link as={Link} to={'/Order'}>
+										Order Online
+									</Nav.Link>
 								</Nav>
 								<Nav>
 									<Nav.Link as={Link} to={'/Login'}>
@@ -200,6 +203,7 @@ function NavbarRestaurant() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/Menu" element={<Menu />} />
+					<Route path="/Order" element={<LoginPage />} />
 					<Route path="/Login" element={<LoginPage />} />
 					<Route path="/Register" element={<RegisterPage />} />
 				</Routes>

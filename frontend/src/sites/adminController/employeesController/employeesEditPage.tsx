@@ -36,7 +36,7 @@ export const EmployeesEditPage = () => {
 			<Row>
 				<Col sm={2} />
 
-				<Col sm={8} className="MainRow">
+				<Col sm={8} className="CardMain">
 					<div className="Card">
 						<h2>Edit Employee</h2>
 						<Form onSubmit={SubmitHandler}>

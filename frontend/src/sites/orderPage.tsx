@@ -1,10 +1,7 @@
-import React, { useState, useRef, SyntheticEvent, useEffect } from 'react';
+import React, { useState, SyntheticEvent, useEffect } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { resolve } from 'node:path/win32';
-import { Dish } from '../interfaces';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import '../stylesheets/orderOnline.css';
 export const OrderPage = () => {
 	const [ email, setEmail ] = useState('');
@@ -31,7 +28,6 @@ export const OrderPage = () => {
 			.then((res) => {})
 			.catch((error) => {
 				if (error.response) {
-					console.log(error.response.data);
 					setError(error.response.data.result);
 				}
 			});
@@ -92,8 +88,12 @@ export const OrderPage = () => {
 									</Form.Group>
 									<Form.Label>Add Position</Form.Label>
 									<Form.Select value={position} onChange={(e: any) => setPosition(e.target.value)}>
-										<option>Positions</option>
+										<option value="positions">Products</option>
 										{backendData.map((item: any) => {
+											let returnDishAndPrice: any[] = [];
+											returnDishAndPrice.push(item.name);
+											returnDishAndPrice.push(item.price);
+
 											return (
 												<option key={item._id} value={item.name}>
 													{item.name} {item.price}$
@@ -106,7 +106,10 @@ export const OrderPage = () => {
 										variant="success"
 										onClick={(e: any) => {
 											e.preventDefault();
-											setPositions((positions) => [ ...positions, position ]);
+											console.log(position);
+											if (position != null && position != 'positions') {
+												setPositions((positions) => [ ...positions, position ]);
+											}
 										}}
 									>
 										Add Position
@@ -115,9 +118,7 @@ export const OrderPage = () => {
 							</div>
 							<div className="OrderSmallRow">
 								<h3>Your Order</h3>
-								<div style={{ border: '1px solid black' }}>
-									<p>{JSON.stringify(positions)}</p>
-								</div>
+								<div>{positions.map((position) => <li>{position}</li>)}</div>
 								<Button className="SubmitButton" type="submit" variant="success" form="orderForm">
 									Submit Order
 								</Button>

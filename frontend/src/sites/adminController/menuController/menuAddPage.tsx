@@ -31,7 +31,7 @@ export const MenuAddPage = () => {
 		<div className="">
 			<Row>
 				<Col sm={2} />
-				<Col sm={8} className="MainRow">
+				<Col sm={8} className="CardMain">
 					<div className="Card">
 						<h2>Add Position</h2>
 						<h5 className="alert-danger">{errorMsg}</h5>

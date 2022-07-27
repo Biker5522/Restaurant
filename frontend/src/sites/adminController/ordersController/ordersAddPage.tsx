@@ -53,10 +53,10 @@ export const OrdersAddPage = () => {
 	};
 	return (
 		<div className="">
-			<Row>
+			<Row className="m-0 p-0">
 				<Col sm={2} />
 
-				<Col sm={8} className="MainRow">
+				<Col sm={8} className="CardMain">
 					<div className="Card">
 						<h2>New Order</h2>
 						<h5 className="alert-danger">{errorMsg}</h5>
@@ -110,8 +110,13 @@ export const OrdersAddPage = () => {
 									onChange={(e: any) => setEmployeeSurname(e.target.value)}
 								/>
 								<Form.Label>Add Position</Form.Label>
-								<Form.Select value={position} onChange={(e: any) => setPosition(e.target.value)}>
-									<option>Positions</option>
+								<Form.Select
+									value={position}
+									onChange={(e: any) => {
+										setPosition(e.target.value);
+									}}
+								>
+									<option value="">options</option>
 									{backendData.map((item: any) => {
 										return (
 											<option key={item._id} value={item.name}>
@@ -125,7 +130,9 @@ export const OrdersAddPage = () => {
 									variant="success"
 									onClick={(e: any) => {
 										e.preventDefault();
-										setPositions((positions) => [ ...positions, position ]);
+										if (position != null || position != '') {
+											setPositions((positions) => [ ...positions, position ]);
+										}
 									}}
 								>
 									Add Position

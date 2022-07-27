@@ -35,36 +35,41 @@ export const MenuEditPage = () => {
 			<Row>
 				<Col sm={2} />
 
-				<Col sm={8} className="MainRow">
-					<Form onSubmit={SubmitHandler}>
-						<Form.Group>
-							<Form.Label>Edit Product</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Enter name"
-								value={name}
-								onChange={(e: any) => setName(e.target.value)}
-							/>
-							<Form.Control
-								type="text"
-								placeholder="Enter category"
-								value={category}
-								onChange={(e: any) => setCategory(e.target.value)}
-							/>
-							<Form.Control
-								type="number"
-								placeholder="Enter Price"
-								value={price}
-								onChange={(e: any) => setPrice(e.target.value)}
-							/>
-						</Form.Group>
-						<Button type="submit" variant="success">
-							Submit
-						</Button>
-						<Link to="/Menu/List" className="btn btn-danger ml-2">
-							Cancel
-						</Link>
-					</Form>
+				<Col sm={8} className="CardMain">
+					<div className="Card">
+						<Form onSubmit={SubmitHandler}>
+							<h2>Edit Product</h2>
+							<Form.Group>
+								<Form.Label>Name</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter name"
+									value={name}
+									onChange={(e: any) => setName(e.target.value)}
+								/>
+								<Form.Label>Category</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Enter category"
+									value={category}
+									onChange={(e: any) => setCategory(e.target.value)}
+								/>
+								<Form.Label>Price</Form.Label>
+								<Form.Control
+									type="number"
+									placeholder="Enter Price"
+									value={price}
+									onChange={(e: any) => setPrice(e.target.value)}
+								/>
+							</Form.Group>
+							<Button type="submit" variant="success">
+								Submit
+							</Button>
+							<Link to="/Menu/List" className="btn btn-danger ml-2">
+								Cancel
+							</Link>
+						</Form>
+					</div>
 				</Col>
 
 				<Col sm={2} />

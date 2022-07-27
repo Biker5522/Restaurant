@@ -36,3 +36,7 @@ body {
 	padding: 0;
 	display: inline-block;
 }
+div.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}

@@ -3,6 +3,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../css.css';
+import '../../../stylesheets/adminController.css';
 
 export const EmployeesAddPage = () => {
 	const [ name, setName ] = useState('');
@@ -25,7 +26,7 @@ export const EmployeesAddPage = () => {
 			<Row>
 				<Col sm={2} />
 
-				<Col sm={8} className="MainRow">
+				<Col sm={8} className="CardMain">
 					<div className="Card">
 						<h2>Add Employee</h2>
 						<Form onSubmit={SubmitHandler}>

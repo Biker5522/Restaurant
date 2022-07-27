@@ -4,7 +4,7 @@ import '../stylesheets/login.css';
 import axios from 'axios';
 import { resolve } from 'node:path/win32';
 import { Dish } from '../interfaces';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 export const LoginPage = () => {
 	const [ email, setEmail ] = useState('');
@@ -31,22 +31,20 @@ export const LoginPage = () => {
 				navigate('/');
 			})
 			.catch((error) => {
-				if( error.response ){
-					setError(error.response.data) ;
+				if (error.response) {
+					setError(error.response.data);
 				}
 			});
-
-		
 	};
 	return (
 		<div>
 			<Row className="m-0 p-0">
 				<Col sm={2} />
 				<Col sm={8}>
-					<div>
+					<div className="d-flex justify-content-center align-items-center">
 						<div className="LoginCard">
 							<h2>Login</h2>
-							<h5 className='alert-danger'>{errorMsg}</h5>
+							<h5 className="alert-danger">{errorMsg}</h5>
 							<Form onSubmit={SubmitHandler}>
 								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -57,7 +55,7 @@ export const LoginPage = () => {
 										value={email}
 										onChange={(e: any) => setEmail(e.target.value)}
 									/>
-								</Form.Group>	
+								</Form.Group>
 								{/* Password Form */}
 								<Form.Group className="mb-3" controlId="formBasicPassword">
 									<Form.Label>Hasło</Form.Label>
@@ -68,6 +66,7 @@ export const LoginPage = () => {
 										onChange={(e: any) => setPassword(e.target.value)}
 									/>
 								</Form.Group>
+								<Link to="/Register">You don't have an account? </Link>
 								<div className="ButtonsContainer">
 									{/* Button */}
 									<Button

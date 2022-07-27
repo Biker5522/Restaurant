@@ -27,7 +27,7 @@ export const IncomePage = () => {
 			<Row>
 				<Col sm={2} />
 
-				<Col sm={8} className="MainRow">
+				<Col sm={8} className="CardMain">
 					<div className="Card">
 						<h2>Orders in specific set of time</h2>
 						<Form onSubmit={SubmitHandler}>
@@ -49,11 +49,8 @@ export const IncomePage = () => {
 							</Form.Group>
 							<div style={{ margin: '1rem' }}>
 								<Button type="submit" variant="success">
-									Submit
+									Check
 								</Button>
-								<Link to="/Menu/List" className="btn btn-danger ml-2">
-									Cancel
-								</Link>
 							</div>
 						</Form>
 						<ListGroup>

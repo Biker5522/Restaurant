@@ -23,6 +23,7 @@
 	width: 50%;
 }
 .OrderSmallRow {
+	display: grid;
 	align-items: center;
 	margin: 30px auto;
 	background-color: azure;
@@ -37,8 +38,8 @@
 	margin-right: 0;
 	overflow-wrap: break-word;
 	margin-bottom: 10px;
+	max-height: 36rem;
 }
 .SubmitButton {
-	margin-top: 140%;
 	margin-bottom: 0%;
 }
