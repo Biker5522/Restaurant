@@ -74,4 +74,4 @@ if(production==true){
 mongoose.connect('mongodb+srv://dawid:cichy@rest.xarzi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () =>
 	console.log('Connected to Database')
 );
-app.listen(5000, () => console.log('Server Running'));
+app.listen(process.env.PORT || 5000, () => console.log('Server Running'));
