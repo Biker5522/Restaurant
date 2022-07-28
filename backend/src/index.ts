@@ -1,6 +1,7 @@
 import express, { response } from 'express';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
 let cookieParser = require('cookie-parser');
 require('dotenv').config();
 
@@ -37,7 +38,7 @@ app.use('/Magazyn', routerProducts);
 
 //Reservation
 const routerBookings = require('../routes/bookings');
-app.use('/Rezerwacje', routerBookings);
+app.use('/Reservations', routerBookings);
 
 //Orders
 const routerOrders = require('../routes/orders');
@@ -47,9 +48,27 @@ app.use('/Orders', routerOrders);
 const routerReports = require('../routes/reports');
 app.use('/Reports', routerReports);
 
-app.get('/', (req, res) => {
-	res.send('Restaurant World');
-});
+
+
+//Deployment 
+
+__dirname=path.resolve();
+let production=true;
+
+if(production==true){
+	app.use(express.static(path.join(__dirname,"/frontend/build")))
+	app.get('*',(req,res)=>{
+		res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
+	})
+}
+	else{
+		app.use('/', (req, res) => {
+			res.send("Restaurant World");
+			
+		  })
+
+	}
+
 
 //Database
 mongoose.connect('mongodb+srv://dawid:cichy@rest.xarzi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () =>

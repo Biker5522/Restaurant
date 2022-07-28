@@ -1,14 +1,19 @@
 .DiscountElements {
 	margin-top: 2rem;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(auto, 620px));
+	grid-template-columns: repeat(auto-fill, minmax(auto, 320px));
 	grid-template-rows: 2fr;
 	padding: 0 auto;
 	justify-items: center;
+	grid-gap: 30px;
+	justify-content: center;
 }
 .DiscountCard {
 	display: flex;
 	margin-bottom: 2rem;
+	max-width: 100%;
+	
+	
 }
 .Discount {
 	max-height: 500px;
