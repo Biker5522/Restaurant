@@ -1,5 +1,5 @@
-import { Express, Router, Response, Request } from 'express';
-import { appendFile } from 'fs';
+import { Response, Request } from 'express';
+
 const express = require('express');
 const router = express.Router();
 const Employee = require('../Models/EmployeeModel');
@@ -8,8 +8,8 @@ const verify = require('../routes/users/authToken');
 //GET List of Employees
 router.get('/', async (req: Request, res: Response) => {
 	try {
-		const pracownicy = await Employee.find();
-		return res.status(200).json(pracownicy);
+		const employees = await Employee.find();
+		return res.status(200).json(employees);
 	} catch (err) {
 		const result = (err as Error).message;
 		return res.status(400).json({ result });

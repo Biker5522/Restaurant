@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Button, Stack, ListGroupItem, ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Row, Col, ListGroupItem, ListGroup } from 'react-bootstrap';
 import '../../../css.css';
 import '../../../stylesheets/adminPanels.css';
 import axios from 'axios';
-import { Console } from 'console';
 
 export const WaitersOrdersPage = () => {
 	const [ backendData, setBackendData ] = useState<any>([]);

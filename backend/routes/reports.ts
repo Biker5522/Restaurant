@@ -2,12 +2,12 @@ import { Express, Router, Response, Request } from 'express';
 import { appendFile } from 'fs';
 const express = require('express');
 const router = express.Router();
-const Product = require('../Models/ProductModel');
+
 const Employee = require('../Models/EmployeeModel');
 const Order = require('../Models/OrderModel');
 const verify = require('../routes/users/authToken');
 
-//GET Wyświetla wszystkie zamówienia dla danego kelnera
+//GET get all orders for particular employee
 router.get('/WaitersOrders', async (req: Request, res: Response) => {
 	try {
 		const employees = await Employee.find();
@@ -27,7 +27,7 @@ router.get('/WaitersOrders', async (req: Request, res: Response) => {
 		return res.status(400).json({ result });
 	}
 });
-//Zwraca zamówienia w danym przedziale
+//Get all orders in specific time
 router.get('/Orders/:start/:end', async (req: Request, res: Response) => {
 	try {
 		var returnList: any[] = [];
@@ -46,7 +46,7 @@ router.get('/Orders/:start/:end', async (req: Request, res: Response) => {
 		return res.status(400).json({ result });
 	}
 });
-//Zlicza Przychody z danego przedziału
+//GET income in specific time
 router.get('/Income/:start/:end', async (req: Request, res: Response) => {
 	try {
 		var income: Number = 0;

@@ -4,15 +4,14 @@ const router = require('express').Router();
 const User = require('../../Models/UserModel');
 const jwt = require('jsonwebtoken');
 
-//POST dodanie użytkownika
+//POST Add User
 router.post('/register', async (req: any, res: any) => {
-	//Dodanie
+	//Add
 	const user = new User({
 		email: req.body.email,
 		password: req.body.password,
 		role: req.body.role
 	});
-	//Walidacja
 	const emailExist = await User.findOne({ email: req.body.email });
 	if (emailExist) return res.status(400).send('Email exist');
 	//zapis

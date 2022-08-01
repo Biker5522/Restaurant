@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-		min: 5
+		min: 3
 	},
 	date: {
 		type: Date,

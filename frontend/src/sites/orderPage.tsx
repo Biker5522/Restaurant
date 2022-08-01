@@ -3,19 +3,28 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/orderOnline.css';
+
 export const OrderPage = () => {
-	const [ email, setEmail ] = useState('');
-	const [ street, setStreet ] = useState('');
-	const [ phone, setPhone ] = useState('');
-	const [ flatNumber, setFlatNumber ] = useState('');
+	const [ email, setEmail ] = useState();
+	const [ street, setStreet ] = useState();
+	const [ phone, setPhone ] = useState();
+	const [ flatNumber, setFlatNumber ] = useState();
 	let [ errorMsg, setError ] = useState('');
 	let [ position, setPosition ] = useState<any>();
 	const [ positions, setPositions ] = useState<any[]>([]);
 	const [ backendData, setBackendData ] = useState([]);
 
+	let price = 0;
 	let navigate = useNavigate();
+	let positionsSend: any[] = [];
+	//Post Order
 	const SubmitHandler = async (e: SyntheticEvent) => {
 		e.preventDefault();
+		{
+			positions.map((position) => {
+				positionsSend.push(position.split(',')[0]);
+			});
+		}
 		//Api connect POST User
 		await axios
 			.post('/Orders/Online', {
@@ -23,7 +32,7 @@ export const OrderPage = () => {
 				street: street,
 				phone: phone,
 				flatNumber: flatNumber,
-				positions: positions
+				positions: positionsSend
 			})
 			.then((res) => {})
 			.catch((error) => {
@@ -35,7 +44,6 @@ export const OrderPage = () => {
 
 	useEffect(() => {
 		axios('/Menu').then((res) => {
-			console.log(res.data.dishes);
 			setBackendData(res.data.dishes);
 		});
 	}, []);
@@ -95,7 +103,7 @@ export const OrderPage = () => {
 											returnDishAndPrice.push(item.price);
 
 											return (
-												<option key={item._id} value={item.name}>
+												<option key={item._id} value={returnDishAndPrice}>
 													{item.name} {item.price}$
 												</option>
 											);
@@ -104,10 +112,13 @@ export const OrderPage = () => {
 									<Button
 										type="submit"
 										variant="success"
+										className="mt-3"
 										onClick={(e: any) => {
 											e.preventDefault();
-											console.log(position);
-											if (position != null && position != 'positions') {
+											if (positions.length == 14) {
+												setError('To many positions');
+											}
+											if (position != null && position != 'positions' && positions.length < 14) {
 												setPositions((positions) => [ ...positions, position ]);
 											}
 										}}
@@ -117,8 +128,21 @@ export const OrderPage = () => {
 								</Form>
 							</div>
 							<div className="OrderSmallRow">
-								<h3>Your Order</h3>
-								<div>{positions.map((position) => <li>{position}</li>)}</div>
+								<div className="SROrder">
+									<h3>Your Order</h3>
+									<div>
+										{positions.map((position) => {
+											price = price + +position.split(',')[1];
+											console.log(price);
+											return (
+												<li>
+													{position.split(',')[0]} {position.split(',')[1]}$
+												</li>
+											);
+										})}
+									</div>
+								</div>
+								<p>Price: {price}</p>
 								<Button className="SubmitButton" type="submit" variant="success" form="orderForm">
 									Submit Order
 								</Button>

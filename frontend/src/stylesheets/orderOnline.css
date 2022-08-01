@@ -23,14 +23,19 @@
 	width: 50%;
 }
 .OrderSmallRow {
-	display: grid;
-	align-items: center;
 	margin: 30px auto;
 	background-color: azure;
-	width: 30%;
+	width: 25%;
 	min-width: 250px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
+	align-content: flex-start;
+
 	padding: 30px;
+	padding-left: 50px;
 	margin-bottom: 5rem;
 	background-color: rgb(255, 255, 255);
 	border-radius: 40px;
@@ -40,6 +45,9 @@
 	margin-bottom: 10px;
 	max-height: 36rem;
 }
+.SROrder {
+	flex-grow: 1;
+}
 .SubmitButton {
-	margin-bottom: 0%;
+	justify-self: flex-end;
 }

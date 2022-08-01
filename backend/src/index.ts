@@ -1,5 +1,4 @@
-import express, { response } from 'express';
-import { Request, Response } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 let cookieParser = require('cookie-parser');
@@ -48,27 +47,20 @@ app.use('/Orders', routerOrders);
 const routerReports = require('../routes/reports');
 app.use('/Reports', routerReports);
 
+//Deployment
+__dirname = path.resolve();
 
-
-//Deployment 
-
-__dirname=path.resolve();
-let production=true;
-
-if(production==true){
-	app.use(express.static(path.join(__dirname,"/frontend/build")))
-	app.get('*',(req,res)=>{
-		res.sendFile(path.resolve(__dirname,'frontend','build','index.html'))
-	})
+if (process.env.NODE_ENV === 'PRODUCTION') {
+	app.use(express.static(path.join(__dirname, '/frontend/build')));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+	});
+} else {
+	app.use('/', (req, res) => {
+		res.send('Restaurant World');
+		console.log('0');
+	});
 }
-	else{
-		app.use('/', (req, res) => {
-			res.send("Restaurant World");
-			
-		  })
-
-	}
-
 
 //Database
 mongoose.connect('mongodb+srv://dawid:cichy@rest.xarzi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () =>

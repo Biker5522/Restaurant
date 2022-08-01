@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { SyntheticEvent, useState } from 'react';
-import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
+import { SyntheticEvent, useState } from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../css.css';
 import '../../../stylesheets/adminController.css';
@@ -53,12 +53,14 @@ export const EmployeesAddPage = () => {
 									onChange={(e: any) => setPosition(e.target.value)}
 								/>
 							</Form.Group>
-							<Button type="submit" variant="success">
-								Submit
-							</Button>
-							<Link to="/Employees/List" className="btn btn-danger ml-2">
-								Cancel
-							</Link>
+							<div className="mt-3">
+								<Button type="submit" variant="success">
+									Submit
+								</Button>
+								<Link to="/Employees/List" className="btn btn-danger ml-2">
+									Cancel
+								</Link>
+							</div>
 						</Form>
 					</div>
 				</Col>

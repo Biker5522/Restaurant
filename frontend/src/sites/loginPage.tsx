@@ -1,11 +1,10 @@
-import React, { useState, useRef, SyntheticEvent } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import '../stylesheets/login.css';
 import axios from 'axios';
-import { resolve } from 'node:path/win32';
-import { Dish } from '../interfaces';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+
 export const LoginPage = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
@@ -79,6 +78,11 @@ export const LoginPage = () => {
 									</Button>
 								</div>
 							</Form>
+						</div>
+						<div className="LoginCard">
+							<h2>Login to admin</h2>
+							<p className="mt-5">Login: dawid@gmail.com</p>
+							<p>Password: qwerty</p>
 						</div>
 					</div>
 				</Col>

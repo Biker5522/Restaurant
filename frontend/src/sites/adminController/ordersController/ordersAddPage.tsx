@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, { SyntheticEvent, useState, useEffect } from 'react';
-import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
+import { SyntheticEvent, useState, useEffect } from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../css.css';
 
 export const OrdersAddPage = () => {
 	const [ employeeName, setEmployeeName ] = useState('');
 	const [ employeeSurname, setEmployeeSurname ] = useState('');
-	let [ table, setTable ] = useState('');
+	const [ table, setTable ] = useState('');
+	const [ date, setDate ] = useState();
+	const [ price, setPrice ] = useState('');
 	let [ position, setPosition ] = useState<any>();
 	const [ positions, setPositions ] = useState<any[]>([]);
 	let [ errorMsg, setError ] = useState('');
@@ -43,7 +45,9 @@ export const OrdersAddPage = () => {
 			.post('/Orders', {
 				employename: employeeName,
 				employeSurname: employeeSurname,
-				table: table
+				table: table,
+				price: price,
+				positions: positions
 			})
 			.catch((error) => {
 				if (error.response) {
@@ -77,13 +81,6 @@ export const OrdersAddPage = () => {
 									onChange={(e: any) => setEmployeeSurname(e.target.value)}
 								/>
 								<Form.Label>Table</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Enter table"
-									value={employeeSurname}
-									onChange={(e: any) => setEmployeeSurname(e.target.value)}
-								/>
-								<Form.Label>Table</Form.Label>
 								<Form.Select value={table} onChange={(e: any) => setTable(e.target.value)}>
 									<option>Tables</option>
 									{tables.map((item: any) => {
@@ -99,15 +96,15 @@ export const OrdersAddPage = () => {
 								<Form.Control
 									type="date"
 									placeholder="Enter date*"
-									value={employeeSurname}
-									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+									value={date}
+									onChange={(e: any) => setDate(e.target.value)}
 								/>
 								<Form.Label>Price*</Form.Label>
 								<Form.Control
 									type="number"
 									placeholder="Enter price*"
-									value={employeeSurname}
-									onChange={(e: any) => setEmployeeSurname(e.target.value)}
+									value={price}
+									onChange={(e: any) => setPrice(e.target.value)}
 								/>
 								<Form.Label>Add Position</Form.Label>
 								<Form.Select
