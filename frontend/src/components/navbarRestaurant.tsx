@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css.css';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Link, Route, useNavigate } from 'react-router-dom';
 import { Home } from '../sites/homePage';
 import { Menu } from '../sites/menuPage';
 
@@ -36,8 +36,8 @@ function NavbarRestaurant() {
 	//Logout
 	function Logout() {
 		removeCookie('token');
-		window.location.reload();
 	}
+
 	//Check is User Logged
 	if (token != null) {
 		//Decode JWT Token
